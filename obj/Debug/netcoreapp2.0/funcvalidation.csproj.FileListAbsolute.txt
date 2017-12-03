@@ -1,0 +1,13 @@
+/Users/sebandres/lup/experiments/funcvalidation/obj/Debug/netcoreapp2.0/funcvalidation.csproj.CoreCompileInputs.cache
+/Users/sebandres/lup/experiments/funcvalidation/obj/Debug/netcoreapp2.0/funcvalidation.AssemblyInfoInputs.cache
+/Users/sebandres/lup/experiments/funcvalidation/obj/Debug/netcoreapp2.0/funcvalidation.AssemblyInfo.cs
+/Users/sebandres/lup/experiments/funcvalidation/bin/Debug/netcoreapp2.0/xunit.runner.visualstudio.dotnetcore.testadapter.dll
+/Users/sebandres/lup/experiments/funcvalidation/bin/Debug/netcoreapp2.0/xunit.runner.utility.netstandard15.dll
+/Users/sebandres/lup/experiments/funcvalidation/bin/Debug/netcoreapp2.0/xunit.runner.reporters.netstandard15.dll
+/Users/sebandres/lup/experiments/funcvalidation/bin/Debug/netcoreapp2.0/funcvalidation.deps.json
+/Users/sebandres/lup/experiments/funcvalidation/bin/Debug/netcoreapp2.0/funcvalidation.runtimeconfig.json
+/Users/sebandres/lup/experiments/funcvalidation/bin/Debug/netcoreapp2.0/funcvalidation.runtimeconfig.dev.json
+/Users/sebandres/lup/experiments/funcvalidation/bin/Debug/netcoreapp2.0/funcvalidation.dll
+/Users/sebandres/lup/experiments/funcvalidation/bin/Debug/netcoreapp2.0/funcvalidation.pdb
+/Users/sebandres/lup/experiments/funcvalidation/obj/Debug/netcoreapp2.0/funcvalidation.dll
+/Users/sebandres/lup/experiments/funcvalidation/obj/Debug/netcoreapp2.0/funcvalidation.pdb
