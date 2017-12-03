@@ -25,7 +25,6 @@ namespace funcvalidation
               .GetResult()
               .SelectMany(a => a)
               .Aggregate("", (a, b) => a.Length == 0 ? b : $"{a}, {b}");
-      //          .Select(a => a);
     }
 
     public class Questions
