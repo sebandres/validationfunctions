@@ -1,11 +1,53 @@
 namespace funcvalidation
 {
   using System;
+  using System.Collections.Generic;
   using System.Linq;
   using System.Threading.Tasks;
 
   public class Validation
   {
+    public static string ValidateCsvRow(int[] columnTypes, string[] values)
+    {
+      List<Task<string[]>> tasks = new List<Task<string[]>>();
+      for (var i = 0; i < columnTypes.Length; i++)
+      {
+        Console.WriteLine($"i: {i}");
+        var columnType = columnTypes[i];
+        var value = values[i];
+        tasks.Add(new Task<string[]>(() => Questions.ValidateQuestion(columnType, value)));
+      }
+
+      tasks.ForEach(t => t.Start());
+
+      return Task.WhenAll(tasks)
+              .GetAwaiter()
+              .GetResult()
+              .SelectMany(a => a)
+              .Aggregate("", (a, b) => a.Length == 0 ? b : $"{a}, {b}");
+      //          .Select(a => a);
+    }
+
+    public class Questions
+    {
+      public static string[] ValidateQuestion(int type, string value)
+      {
+        switch (type)
+        {
+          case 1: //Free text input
+            {
+              return Validation.ValidateFreeTextInput(value);
+            }
+          case 2: //DOB Field
+            {
+              return Validation.ValidateDOBInput(value);
+            }
+          default:
+            throw new ArgumentOutOfRangeException(nameof(type), "Unknown question type");
+        }
+      }
+    }
+
     private class DateValidation
     {
       public static string IsDate(string value)
