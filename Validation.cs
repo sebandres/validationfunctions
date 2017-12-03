@@ -7,15 +7,19 @@ namespace funcvalidation
 
   public class Validation
   {
-    public static string ValidateCsvRow(int[] columnTypes, string[] values)
+    public static string ValidateCsvRow(string[] headers, int[] columnTypes, string[] values)
     {
-      List<Task<string[]>> tasks = new List<Task<string[]>>();
+      List<Task<string>> tasks = new List<Task<string>>();
       for (var i = 0; i < columnTypes.Length; i++)
       {
-        Console.WriteLine($"i: {i}");
         var columnType = columnTypes[i];
+        var header = headers[i];
         var value = values[i];
-        tasks.Add(new Task<string[]>(() => Questions.ValidateQuestion(columnType, value)));
+        tasks.Add(new Task<string>(() =>
+        {
+          var errors = Questions.ValidateQuestion(columnType, value).Aggregate("", (a, b) => a.Length == 0 ? b : $"{a}, {b}");
+          return errors.Length == 0 ? string.Empty : $"{header}: {errors}";
+        }));
       }
 
       tasks.ForEach(t => t.Start());
@@ -23,8 +27,7 @@ namespace funcvalidation
       return Task.WhenAll(tasks)
               .GetAwaiter()
               .GetResult()
-              .SelectMany(a => a)
-              .Aggregate("", (a, b) => a.Length == 0 ? b : $"{a}, {b}");
+              .Aggregate("", (a, b) => a.Length == 0 ? b : b.Length == 0 ? a : $"{a}; {b}");
     }
 
     public class Questions
